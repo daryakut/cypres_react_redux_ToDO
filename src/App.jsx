@@ -1,26 +1,27 @@
-import {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Provider } from "react-redux"; // Добавляем import Provider
+import store from "./store"; // Импортируем store
 
-import { addTodo } from './store/todoSlice';
-import NewTodoForm from './components/NewTodoForm';
-import TodoList from './components/TodoList';
+import { addTodo } from "./store/todoSlice";
+import NewTodoForm from "./components/NewTodoForm";
+import TodoList from "./components/TodoList";
 
-import './App.css';
-
+import "./App.css";
 
 function App() {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
   const dispatch = useDispatch();
 
   const handleAction = () => {
-    if(text.trim().length) {
-      dispatch(addTodo({text}));
-      setText('');
+    if (text.trim().length) {
+      dispatch(addTodo({ text }));
+      setText("");
     }
-  }
+  };
 
   return (
-    <div className='App'>
+    <div className="App">
       <NewTodoForm
         value={text}
         updateText={setText}
